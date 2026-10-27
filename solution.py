@@ -26,6 +26,9 @@ class RoomBooking:
             return False
         if not (_is_int(start) and _is_int(end)):
             return False
+        # 이름이 비었거나 공백뿐이면 누가 예약했는지 알 수 없으므로 거절
+        if not isinstance(name, str) or not name.strip():
+            return False
         if start < OPEN or end > CLOSE:
             return False
         if start >= end:
